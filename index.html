@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara Borba — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #111115;
+    --surface:    #1a1a1f;
+    --surface2:   #222228;
+    --border:     #2e2e36;
+    --rose:       #c9a0a8;
+    --rose-dim:   #96707a;
+    --rose-faint: rgba(201,160,168,0.08);
+    --text:       #ede8e6;
+    --text-soft:  #a89e9c;
+    --text-muted: #6a6068;
+    --divider:    rgba(201,160,168,0.15);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden}
+  body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5vw;background:rgba(17,17,21,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:0.02em;color:var(--text)}
+  .nav-logo span{color:var(--rose);font-style:italic}
+  .nav-links{display:flex;gap:2.4rem;list-style:none}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--rose)}
+  .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 5vw 5rem;position:relative;overflow:hidden}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--divider) 1px,transparent 1px),linear-gradient(90deg,var(--divider) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 70% 60% at 65% 50%,black,transparent)}
+  .hero-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,160,168,0.09) 0%,transparent 68%);top:-80px;right:0;pointer-events:none}
+  .hero-content{max-width:680px;position:relative;z-index:1}
+  .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--rose-faint);border:1px solid var(--divider);color:var(--rose);font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.8rem}
+  .hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--rose);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6.5vw,5.2rem);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin-bottom:1.2rem}
+  .hero h1 em{font-style:italic;color:var(--rose)}
+  .hero-desc{font-size:1rem;font-weight:300;color:var(--text-soft);max-width:520px;line-height:1.85;margin-bottom:2.2rem}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.8rem}
+  .chip{background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);font-size:0.75rem;font-family:'DM Mono',monospace;padding:0.28rem 0.75rem;border-radius:5px;transition:all 0.2s}
+  .chip:hover{border-color:var(--rose-dim);color:var(--rose)}
+  .hero-cta{display:flex;gap:0.9rem}
+  .btn-p{background:var(--rose);color:#111115;padding:0.8rem 1.8rem;border-radius:7px;text-decoration:none;font-weight:600;font-size:0.88rem;transition:all 0.2s;border:1px solid var(--rose)}
+  .btn-p:hover{background:transparent;color:var(--rose)}
+  .btn-o{background:transparent;color:var(--text-soft);padding:0.8rem 1.8rem;border-radius:7px;text-decoration:none;font-weight:400;font-size:0.88rem;border:1px solid var(--border);transition:all 0.2s}
+  .btn-o:hover{border-color:var(--rose-dim);color:var(--text)}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:0 5vw}
+  .stat{background:var(--surface);padding:1.4rem 1.6rem;text-align:center}
+  .stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--rose)}
+  .stat-l{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem}
+  section{padding:6rem 5vw;position:relative;z-index:1}
+  .s-label{font-size:0.7rem;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--rose);margin-bottom:0.5rem;display:block}
+  .s-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:700;color:var(--text);line-height:1.12;margin-bottom:0.5rem}
+  .s-title em{font-style:italic;color:var(--text-soft)}
+  .s-rule{width:48px;height:1px;background:var(--rose);margin-bottom:3rem;opacity:0.6}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .about-text p{font-size:0.97rem;color:var(--text-soft);line-height:1.9;margin-bottom:1.1rem;font-weight:300}
+  .about-text strong{color:var(--text);font-weight:500}
+  .stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .stack-card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:1.2rem 1.3rem;position:relative;overflow:hidden;transition:all 0.25s}
+  .stack-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--rose);opacity:0;transition:opacity 0.2s}
+  .stack-card:hover{border-color:var(--divider);transform:translateY(-2px)}
+  .stack-card:hover::before{opacity:1}
+  .sc-icon{width:28px;height:28px;margin-bottom:0.7rem}
+  .sc-name{font-size:0.88rem;font-weight:500;color:var(--text);margin-bottom:0.15rem}
+  .sc-desc{font-size:0.75rem;color:var(--text-muted);line-height:1.5}
+  .filter-tabs{display:flex;gap:0.45rem;flex-wrap:wrap;margin-bottom:2.2rem}
+  .ftab{background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;padding:0.4rem 1.1rem;border-radius:100px;cursor:pointer;transition:all 0.2s}
+  .ftab.active,.ftab:hover{background:var(--rose);border-color:var(--rose);color:#111115}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.3rem}
+  .pcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.28s}
+  .pcard:hover{border-color:var(--divider);transform:translateY(-3px);box-shadow:0 18px 50px rgba(0,0,0,0.4)}
+  .pcard.hidden{display:none}
+  .pcard-accent{height:3px}
+  .acc-python{background:var(--rose)}
+  .acc-powerbi{background:var(--rose-dim)}
+  .acc-automate{background:#7a9aaa}
+  .acc-vba{background:#7a9a8a}
+  .pcard-body{padding:1.4rem 1.5rem}
+  .pcard-cat{font-size:0.68rem;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose-dim);margin-bottom:0.7rem;display:block}
+  .pcard-title{font-family:'Playfair Display',serif;font-size:1.07rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:0.65rem}
+  .pcard-desc{font-size:0.84rem;color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:1rem}
+  .pcard-tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+  .ptag{background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);font-size:0.69rem;font-family:'DM Mono',monospace;padding:0.15rem 0.55rem;border-radius:4px}
+  .exp-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+  .exp-card{background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:1.8rem 1.4rem;text-align:center;transition:all 0.25s}
+  .exp-card:hover{border-color:var(--divider);transform:translateY(-3px)}
+  .exp-icon{width:40px;height:40px;margin:0 auto 1.1rem;color:var(--rose)}
+  .exp-org{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);padding-bottom:0.5rem;margin-bottom:0.6rem;border-bottom:1px solid var(--divider)}
+  .exp-role{font-size:0.8rem;color:var(--text-muted);font-weight:300;line-height:1.6}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
+  .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:1.3rem 1rem;display:flex;flex-direction:column;align-items:center;gap:0.7rem;text-align:center;transition:all 0.22s}
+  .skill-card:hover{border-color:var(--divider);transform:translateY(-2px)}
+  .skill-icon{width:32px;height:32px;color:var(--rose)}
+  .skill-name{font-size:0.78rem;font-weight:500;color:var(--text-soft);font-family:'DM Mono',monospace;letter-spacing:0.04em}
+  .contact-inner{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:4rem 5vw;position:relative;overflow:hidden}
+  .contact-inner::before{content:'';position:absolute;top:-120px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,160,168,0.07) 0%,transparent 70%);pointer-events:none}
+  .contact-headline{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:3rem}
+  .contact-headline em{font-style:italic;color:var(--rose)}
+  .contact-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .social-label{font-size:0.68rem;font-family:'DM Mono',monospace;letter-spacing:0.16em;text-transform:uppercase;color:var(--rose-dim);margin-bottom:1.1rem;display:block}
+  .social-row{display:flex;gap:0.8rem;align-items:center;margin-bottom:0.7rem}
+  .social-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;transition:all 0.2s}
+  .social-btn:hover{border-color:var(--rose);color:var(--rose)}
+  .social-btn svg{width:14px;height:14px}
+  .info-list{display:flex;flex-direction:column;gap:1.1rem}
+  .info-row{display:flex;align-items:center;gap:1rem}
+  .info-icon{width:38px;height:38px;border-radius:50%;border:1px solid var(--divider);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--rose)}
+  .info-icon svg{width:16px;height:16px}
+  .info-lbl{font-size:0.67rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose-dim);display:block;margin-bottom:0.1rem;font-family:'DM Mono',monospace}
+  .info-val{font-size:0.92rem;color:var(--text-soft);font-weight:300}
+  footer{text-align:center;padding:1.6rem 5vw;border-top:1px solid var(--border);font-size:0.75rem;color:var(--text-muted);letter-spacing:0.06em}
+  footer span{color:var(--rose)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0}
+  .reveal.vis{animation:fadeUp 0.65s ease both}
+  @media(max-width:900px){.about-grid,.contact-cols{grid-template-columns:1fr;gap:2.5rem}.exp-grid{grid-template-columns:repeat(2,1fr)}.stats-bar{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){nav{padding:1rem 1.2rem}.nav-links{display:none}section{padding:4rem 1.2rem}.stats-bar{margin:0 1.2rem}.exp-grid{grid-template-columns:1fr 1fr}.projects-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sara <span>Borba</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Disponível para oportunidades</div>
+    <h1>Dados que<br><em>contam histórias</em></h1>
+    <p class="hero-desc">Técnica em Eletrotécnica, estudante de Engenharia Elétrica na UTFPR e estagiária na Copel DIS. Transformo dados complexos em automações, dashboards e relatórios que fazem a diferença.</p>
+    <div class="hero-chips">
+      <span class="chip">Python</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">Power Automate</span>
+      <span class="chip">SAP GUI</span>
+      <span class="chip">VBA / VBScript</span>
+      <span class="chip">Playwright</span>
+      <span class="chip">pandas</span>
+      <span class="chip">SharePoint</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projetos" class="btn-p">Ver Projetos</a>
+      <a href="#contato" class="btn-o">Entrar em contato</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Automações</div></div>
+  <div class="stat"><div class="stat-n">3</div><div class="stat-l">Dashboards Power BI</div></div>
+  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Fluxos Automate</div></div>
+  <div class="stat"><div class="stat-n">2</div><div class="stat-l">Anos de experiência</div></div>
+</div>
+
+<section id="sobre">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="s-label">// 01</span>
+      <h2 class="s-title">Sobre <em>mim</em></h2>
+      <div class="s-rule"></div>
+      <p>Sou <strong>Técnica em Eletrotécnica</strong> e estudante de <strong>Engenharia Elétrica na UTFPR</strong>. Atualmente estagio na área de <strong>Construção e Manutenção da Copel DIS</strong> em Ponta Grossa/PR.</p>
+      <p>Minha atuação une conhecimento técnico de campo com <strong>análise de dados e automação de processos</strong> criando soluções que economizam horas de trabalho manual e tornam as informações mais confiáveis para a tomada de decisão.</p>
+    </div>
+    <div class="stack-grid reveal">
+      <div class="stack-card">
+        <svg class="sc-icon" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="2" width="11" height="11" rx="2" stroke="#c9a0a8" stroke-width="1.5"/>
+          <rect x="15" y="2" width="11" height="11" rx="2" stroke="#c9a0a8" stroke-width="1.5" opacity="0.45"/>
+          <rect x="2" y="15" width="11" height="11" rx="2" stroke="#c9a0a8" stroke-width="1.5" opacity="0.45"/>
+          <path d="M15 20h6M18 17v6" stroke="#c9a0a8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="sc-name">Python</div>
+        <div class="sc-desc">pandas, openpyxl, Playwright, SAP GUI scripting</div>
+      </div>
+      <div class="stack-card">
+        <svg class="sc-icon" viewBox="0 0 28 28" fill="none">
+          <rect x="3" y="16" width="4" height="9" rx="1" stroke="#c9a0a8" stroke-width="1.5"/>
+          <rect x="9" y="11" width="4" height="14" rx="1" stroke="#c9a0a8" stroke-width="1.5"/>
+          <rect x="15" y="7" width="4" height="18" rx="1" stroke="#c9a0a8" stroke-width="1.5"/>
+          <rect x="21" y="3" width="4" height="22" rx="1" stroke="#c9a0a8" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+        <div class="sc-name">Power BI</div>
+        <div class="sc-desc">DAX, modelagem, dashboards, relatórios executivos</div>
+      </div>
+      <div class="stack-card">
+        <svg class="sc-icon" viewBox="0 0 28 28" fill="none">
+          <path d="M4 14h8l2-4 2 8 2-4h6" stroke="#c9a0a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4" cy="14" r="1.5" fill="#c9a0a8"/>
+          <circle cx="24" cy="14" r="1.5" fill="#c9a0a8"/>
+        </svg>
+        <div class="sc-name">Power Automate</div>
+        <div class="sc-desc">Fluxos SharePoint, integração Power BI, notificações</div>
+      </div>
+      <div class="stack-card">
+        <svg class="sc-icon" viewBox="0 0 28 28" fill="none">
+          <polyline points="8,9 3,14 8,19" stroke="#c9a0a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="20,9 25,14 20,19" stroke="#c9a0a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="6" x2="12" y2="22" stroke="#c9a0a8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+        <div class="sc-name">VBA / VBScript</div>
+        <div class="sc-desc">Automação SAP, macros Excel, extração de PDF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:2rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <span class="s-label">// 02</span>
+  <h2 class="s-title">Ferramentas <em>&amp; Conhecimentos</em></h2>
+  <div class="s-rule"></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><rect x="3" y="4" width="26" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="10" x2="29" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="10" x2="11" y2="28" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span class="skill-name">Pacote Office</span>
+    </div>
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><rect x="4" y="18" width="4" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="13" width="4" height="15" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="8" width="4" height="20" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="22" y="4" width="4" height="24" rx="1" stroke="currentColor" stroke-width="1.5" opacity="0.5"/></svg>
+      <span class="skill-name">Power BI</span>
+    </div>
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><path d="M6 10h8M6 16h5M6 22h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="20,10 26,16 20,22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="skill-name">Python</span>
+    </div>
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><path d="M6 16h5l3-5 3 10 3-5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="skill-name">Power Automate</span>
+    </div>
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 12h6M10 16h4M10 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span class="skill-name">SAP</span>
+    </div>
+    <div class="skill-card reveal">
+      <svg class="skill-icon" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 16l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="skill-name">SharePoint</span>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <span class="s-label">// 03</span>
+  <h2 class="s-title">Projetos <em>Desenvolvidos</em></h2>
+  <div class="s-rule"></div>
+  <div class="filter-tabs">
+    <button class="ftab active" onclick="fp('all',this)">Todos</button>
+    <button class="ftab" onclick="fp('python',this)">Python</button>
+    <button class="ftab" onclick="fp('powerbi',this)">Power BI</button>
+    <button class="ftab" onclick="fp('automate',this)">Power Automate</button>
+    <button class="ftab" onclick="fp('vba',this)">VBA / VBScript</button>
+  </div>
+  <div class="projects-grid">
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Python · Web Automation</span>
+        <h3 class="pcard-title">Automação de Cancelamento Técnico — Oracle APEX</h3>
+        <p class="pcard-desc">Script Playwright para cancelamento automatizado de ordens de serviço em sistema Oracle APEX, eliminando trabalho manual repetitivo e reduzindo erros operacionais.</p>
+        <div class="pcard-tags"><span class="ptag">Playwright</span><span class="ptag">Python</span><span class="ptag">Oracle APEX</span><span class="ptag">RPA</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power Automate · Oracle . Python</span>
+        <h3 class="pcard-title">Despacho de inspeção exportando dados do Oracle e transformando em Planners</h3>
+        <p class="pcard-desc">Desenvolvimento de script de automação web para extração de dados do sistema Oracle, com integração ao Power Automate para geração automática de planners, apoiando o processo de despacho e gestão de inspeções.</p>
+        <div class="pcard-tags"><span class="ptag">Power Automate</span><span class="ptag">paplaywri</span><span class="ptag">openpyxl</span><span class="ptag">Planner</span><span class="ptag">Oracle</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Python · SAP GUI</span>
+        <h3 class="pcard-title">Extração e Consolidação Materiais via SAP GUI</h3>
+        <p class="pcard-desc">Automação análoga ao MDM para dados RMD, com filtragem regional, consolidação de extrações e exportação padronizada para relatórios de gestão de obras.</p>
+        <div class="pcard-tags"><span class="ptag">SAP GUI</span><span class="ptag">pandas</span><span class="ptag">openpyxl</span><span class="ptag">RMD</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Automação · Oracle APEX</span>
+        <h3 class="pcard-title">Automação de Geração de Notas no APEX</h3>
+        <p class="pcard-desc">Script em Python que realiza a geração automatizada de notas no sistema Oracle APEX através de requisições via protocolo HTTP. A automação preenche formulários, envia dados e registra as notas no sistema, reduzindo atividades manuais e aumentando a confiabilidade do processo.</p>
+        <div class="pcard-tags"><span class="ptag">python</span><span class="ptag">oracle apex</span><span class="ptag">http requests</span><span class="ptag">automação de processos</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Python · Visualização</span>
+        <h3 class="pcard-title">Visualização de Dados — Matplotlib / Chart.js</h3>
+        <p class="pcard-desc">Análise de Status de materiais com interface e login</p>
+        <div class="pcard-tags"><span class="ptag">matplotlib</span><span class="ptag">Chart.js</span><span class="ptag">Excel charts</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="powerbi">
+      <div class="pcard-accent acc-powerbi"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power BI · Dashboard</span>
+        <h3 class="pcard-title">Dashboard MDM e RMD — Monitoramento de Projetos</h3>
+        <p class="pcard-desc">Painel interativo para acompanhamento de projetos MDM RMD com colunas DAX para flags de datas TCO, filtros regionais e indicadores por empresa.</p>
+        <div class="pcard-tags"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">TCO flags</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="powerbi">
+      <div class="pcard-accent acc-powerbi"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power BI · Análise de Ordem de Manobra (OMB)</span>
+        <h3 class="pcard-title">Painel — Análise OMB</h3>
+        <p class="pcard-desc">Desenvolvimento de análise de produtividade baseada em informações de ordens de manobra, com o objetivo de acompanhar o desempenho das equipes por meio da correlação entre horários previstos e executados, identificação das equipes responsáveis e avaliação de possíveis atrasos nas atividades.</p>
+        <div class="pcard-tags"><span class="ptag">Power BI</span><span class="ptag">Python</span><span class="ptag">Análise de OMB</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="automate">
+      <div class="pcard-accent acc-automate"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power Automate · SharePoint</span>
+        <h3 class="pcard-title">Controle Diário de Obras — SharePoint</h3>
+        <p class="pcard-desc">Fluxo diário integrado com SharePoint Lists para troca de documentação entre fiscais e contratadas, com notificações automáticas e registro de histórico.</p>
+        <div class="pcard-tags"><span class="ptag">Power Automate</span><span class="ptag">SharePoint Lists</span><span class="ptag">Fiscalização</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="python">
+      <div class="pcard-accent acc-python"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Automação · Oracle APEX</span>
+        <h3 class="pcard-title">Automação de Geração de Ordens no APEX</h3>
+        <p class="pcard-desc">Script em Python que automatiza a criação de ordens no sistema Oracle APEX por meio de requisições HTTP autenticadas. A solução realiza o envio estruturado dos dados necessários para abertura das ordens, eliminando o preenchimento manual e aumentando a velocidade e confiabilidade do processo.</p>
+        <div class="pcard-tags"><span class="ptag">python</span><span class="ptag">oracle apex</span><span class="ptag">http requests</span><span class="ptag">automação de processos</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="automate">
+      <div class="pcard-accent acc-automate"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power Automate · Integração</span>
+        <h3 class="pcard-title">Extração Power BI → CSV/Excel no SharePoint</h3>
+        <p class="pcard-desc">Fluxo que consulta datasets do Power BI via API, transforma os dados e salva automaticamente arquivos CSV e Excel em bibliotecas SharePoint para distribuição interna.</p>
+        <div class="pcard-tags"><span class="ptag">Power Automate</span><span class="ptag">Power BI API</span><span class="ptag">SharePoint</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="automate">
+      <div class="pcard-accent acc-automate"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">Power Automate · Migração</span>
+        <h3 class="pcard-title">Migração de Biblioteca → Lista SharePoint</h3>
+        <p class="pcard-desc">Fluxo que migra estrutura de pastas de biblioteca do SharePoint para itens em Lista, com enriquecimento via lookup em Excel.</p>
+        <div class="pcard-tags"><span class="ptag">Power Automate</span><span class="ptag">SharePoint</span><span class="ptag">Excel lookup</span></div>
+      </div>
+    </div>
+    <div class="pcard reveal" data-cat="vba">
+      <div class="pcard-accent acc-vba"></div>
+      <div class="pcard-body">
+        <span class="pcard-cat">VBScript · SAP GUI</span>
+        <h3 class="pcard-title">Automação SAP — Salvamento de PDFs RMD</h3>
+        <p class="pcard-desc">VBScript que automatiza a navegação no SAP GUI para localizar ordens RMD e salvar PDFs correspondentes em diretório organizado, eliminando processo manual repetitivo.</p>
+        <div class="pcard-tags"><span class="ptag">VBScript</span><span class="ptag">SAP GUI</span><span class="ptag">PDF automático</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="experiencia">
+  <span class="s-label">// 04</span>
+  <h2 class="s-title"><em>Experiência</em></h2>
+  <div class="s-rule"></div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <svg class="exp-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M13 26l4-8 3 5 3-5 4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="exp-org">SIET</div>
+      <div class="exp-role">Diretora de Marketing<br>Assessora Comercial</div>
+    </div>
+    <div class="exp-card reveal">
+      <svg class="exp-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="5" y="12" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M13 12V9a2 2 0 012-2h10a2 2 0 012 2v3" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="5" y1="21" x2="35" y2="21" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <div class="exp-org">SEA</div>
+      <div class="exp-role">Diretora de Marketing<br>Diretora de Agenda</div>
+    </div>
+    <div class="exp-card reveal">
+      <svg class="exp-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 34c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="20" y1="22" x2="20" y2="28" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <div class="exp-org">GPEB</div>
+      <div class="exp-role">Pesquisadora em<br>Engenharia Biomédica</div>
+    </div>
+    <div class="exp-card reveal">
+      <svg class="exp-icon" viewBox="0 0 40 40" fill="none">
+        <path d="M20 6l2.4 7.4H30l-6.2 4.5 2.4 7.4L20 21 13.8 25.3l2.4-7.4L10 13.4h7.6L20 6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M20 28v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <div class="exp-org">COPEL DIS</div>
+      <div class="exp-role">Estagiária em<br>Construção e Manutenção</div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="contact-inner">
+    <h2 class="contact-headline reveal">
+      Entre em contato se você<br>se interessar, para<br>trabalharmos <em>juntos.</em>
+    </h2>
+    <div class="contact-cols reveal">
+      <div>
+        <span class="social-label">Redes sociais</span>
+        <div class="social-row">
+          <a href="#" class="social-btn" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://instagram.com/saraborba_" class="social-btn" title="Instagram" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sara-pedrozo-borba-0bb885119/" class="social-btn" title="LinkedIn" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4V9h4v1.5"/><circle cx="4" cy="4" r="2"/><line x1="4" y1="9" x2="4" y2="21"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="info-list">
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          </div>
+          <div>
+            <span class="info-lbl">Telefone</span>
+            <span class="info-val">(42) 99951-5013</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <span class="info-lbl">E-mail</span>
+            <span class="info-val">saraborbaeng@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Desenvolvido por <span>Sara Borba</span> · Engenharia Elétrica &amp; Dados · 2025</footer>
+
+<script>
+  function fp(cat, btn) {
+    document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pcard').forEach(c => {
+      c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+    });
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.animationDelay = (i % 5) * 0.07 + 's';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
